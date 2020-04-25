@@ -1,0 +1,15 @@
+<h1>Chat room一覧</h1>
+
+
+
+<% @rooms.each do |room| %>
+  <% user_rooms = room.user_rooms %>
+  <% user_rooms.each do |chatroom| %>
+    <% if chatroom.user.id == current_user.id %>
+      <div class="list-group-item">
+        <%= link_to "Room#{room.id}", room_path(room) %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+

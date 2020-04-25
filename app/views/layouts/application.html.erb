@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/64b8b4bea1.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <%= render "layouts/header" %>
+    
+    <div class="container">
+      <p id="notice" class="padding-top30"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= debug(params) if Rails.env.development? %>
+  </body>
+</html>

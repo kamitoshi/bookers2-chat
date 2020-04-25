@@ -1,0 +1,4 @@
+$("#comments-area").html("<%= j(render 'comments/index', {comments:@book.comments}) %>")
+$("textarea").val('')
+$(".comment-count").html("<%= j(render 'comments/count', {comments:@book.comments}) %>")
+

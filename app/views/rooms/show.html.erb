@@ -1,0 +1,8 @@
+<h1>Chat room<%= @room.id %></h1>
+<p><%= @room.user_rooms[0].user.name %> x <%= @room.user_rooms[1].user.name %></p>
+<form>
+  <input type="text" data-behavior="room_speaker">
+</form>
+<div id="chats" data-room_id="<%= @room.id %>">
+  <%= render @chats %>
+</div>

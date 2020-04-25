@@ -1,0 +1,41 @@
+<table class="table">
+	<tr><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+
+	<tr>
+		<th>name</th>
+		<th><%= user.name %></th>
+	</tr>
+
+	<tr>
+		<th>introduction</th>
+		<th><%= user.introduction %></th>
+	</tr>
+
+	<tr>
+		<th>フォロー数：</th>
+		<th><%= link_to user.follower.count, follows_path(user) %></th>
+	</tr>
+
+	<tr>
+		<th>フォロワー数：</th>
+		<th><%= link_to user.followed.count, followers_path(user) %></th>
+	</tr>
+
+</table>
+
+<% unless user == current_user  %>
+	<div class="row">
+		<%= link_to "チャットする", user_rooms_path(user.id), method: :post, class: "btn btn-primary" %>
+	</div>
+	<div class="row">
+		<% if current_user.follower.find_by(followed_id: user.id) %>
+			<%= link_to "フォローを外す", unfollow_path(user), method: :delete, class: "col-xs-10 col-xs-offset-1 btn btn-danger" %>
+		<% else %>
+			<%= link_to "フォローする", follow_path, method: :post, class: "col-xs-10 col-xs-offset-1 btn btn-success" %>
+		<% end %>
+	</div>
+<% else %>
+	<div class="row">
+		<%= link_to '',edit_user_path(user), class: "col-xs-10 col-xs-offset-1 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
+	</div>
+<% end %>
